@@ -1,0 +1,175 @@
+{% extends 'basecus.html' %}
+{% block header %} Apply for Claim{% endblock header %}
+{% block body %}
+<link rel="stylesheet" href="{{url_for('static',filename='form.css')}}">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<style>
+    input[type="radio"].rad2+label.rad2 {
+        display: inline-block;
+        text-align: center;
+        width: 50%;
+        float: left;
+        border-radius: 0;
+    }
+</style>
+{% with messages = get_flashed_messages() %}
+{% if messages %}
+{% for message in messages %}
+<p style="background-color: aliceblue;color: #333; text-align: center;">{{ message }}</p>
+{% endfor %}
+{% endif %}
+{% endwith %}
+<div class="outer">
+    <div class="container1">
+        <form method="post" action="/addclaim">
+            <div class="row">
+                <h4 style="    padding-bottom: 5%; text-align: center;">Apply for Claim</h4>
+                <!-- <div class="input-group input-group-icon">
+                    <input type="text" name="name" id="exampleInputEmail1" aria-describedby="emailHelp"
+                        placeholder="Name" />
+                    <div class="input-icon"><i class="fa fa-user"></i></div>
+                </div> -->
+                <!-- <div class="input-group input-group-icon">
+                    <input type="email" name="email1" id="exampleInputEmail1" aria-describedby="emailHelp"
+                        placeholder="Email Address" />
+                    <div class="input-icon"><i class="fa fa-envelope"></i></div>
+                </div> -->
+                <!-- <div class="input-group input-group-icon">
+                    <input type="password" name="passwd" id="exampleInputEmail1" placeholder="Password" />
+                    <div class="input-icon"><i class="fa fa-key"></i></div>
+                </div> -->
+                <div class="input-group input-group-icon">
+                    <input type="text" name="carno1" placeholder="Car Number" />
+                    <div class="input-icon"><i class="fa fa-car"></i></div>
+                </div>
+                <div class="row">
+                    <h4>Date of Accident</h4>
+                    <div class="input-group input-group-icon">
+                        <input type="date" max="{{today1}}" name="DOA" id="exampleInputPassword1" />
+                        <div class="input-icon"><i class="fa fa-calendar"></i></div>
+                    </div>
+                    <!-- <div class="col-half">
+                        <h4>Gender</h4>
+                        <div class="input-group">
+                            <input id="gender-male" class="rad2" type="radio" name="gender1" value="Male" />
+                            <label for="gender-male" class="rad2">Male</label>
+                            <input id="gender-female" class="rad2" type="radio" name="gender1" value="Female" />
+                            <label for="gender-female" class="rad2">Female</label>
+                        </div>
+                    </div> -->
+                    <h4>Married Status</h4>
+                    <div class="input-group">
+                        <!-- <input id="status-married" type="radio" name="Status" value="Married" />
+                            <label for="status-married">Married</label>
+                            <input id="status-single" type="radio" name="Status" value="Single" />
+                            <label for="status-single">Single</label> -->
+                        <select name="Status" id="Status">
+                            <option value="null">-Select-</option>
+                            <option value="Married">Married</option>
+                            <option value="Single">Single</option>
+                            <option value="Widow">Widowed</option>
+                            <option value="Divorced">Divorced</option>
+                        </select>
+                    </div>
+                    <div class="col-half">
+                        <h4 style="padding-bottom: 3px;">Area</h4>
+                        <br>
+                        <div class="input-group">
+                            <input id="area-urban" class="rad2" type="radio" name="Area" value="Urban" />
+                            <label for="area-urban" class="rad2">Urban</label>
+                            <input id="area-rural" class="rad2" type="radio" name="Area" value="Rural" />
+                            <label for="area-rural" class="rad2">Rural</label>
+                        </div>
+                    </div>
+                    <!-- Add Widow and Divorced  -->
+
+                    <div class="col-half">
+                        <h4>Police Report filed in police station?</h4>
+                        <div class="input-group">
+                            <input id="police-yes" class="rad2" type="radio" name="PoliceR" value="Yes" />
+                            <label for="police-yes" class="rad2">Yes</label>
+                            <input id="police-no" class="rad2" type="radio" name="PoliceR" value="No" />
+                            <label for="police-no" class="rad2">No</label>
+                        </div>
+                    </div>
+
+                    <div class="col-half">
+                        <h4>Any witness was present?</h4>
+                        <div class="input-group">
+                            <input id="witness-present" class="rad2" type="radio" name="witness" value="Yes" />
+                            <label for="witness-present" class="rad2">Yes</label>
+                            <input id="witness-notpresent" class="rad2" type="radio" name="witness" value="No" />
+                            <label for="witness-notpresent" class="rad2">No</label>
+                        </div>
+                    </div>
+
+                    <div class="col-half">
+                        <h4>Fault</h4>
+                        <div class="input-group">
+                            <input id="fault-policyh" class="rad2" type="radio" name="fault" value="Policy Holder" />
+                            <label for="fault-policyh" class="rad2">PolicyHolder</label>
+                            <input id="fault-thirdp" class="rad2" type="radio" name="fault" value="Third Party" />
+                            <label for="fault-thirdp" class="rad2">Third Party</label>
+                        </div>
+                    </div>
+                    <h4>Number of cars involved in accident</h4>
+                    <div class="input-group">
+                        <!-- <label for="CarsInvolved"></label> -->
+
+                        <select name="CarsInvolved" id="CarsInvolved">
+                            <option value="null">-Select-</option>
+                            <option value="1 vehicle">1 Car</option>
+                            <option value="2 vehicle">2 Cars</option>
+                            <option value="3 to 4">3 to 4 Cars</option>
+                            <option value="5 to 8">5 to 8 Cars</option>
+                            <option value="more than 8">More than 8 Cars</option>
+                        </select>
+                    </div>
+                    <h4>Days between the policy was purchased and the accident occured</h4>
+                    <div class="input-group">
+                        <select name="daypolicyacc" id="daypolicyacc">
+                            <option value="null">-Select-</option>
+                            <option value="none">0 day</option>
+                            <option value="1 to 7">1 to 7 days</option>
+                            <option value="8 to 15">8 to 15 days</option>
+                            <option value="15 to 30">15 to 30 days</option>
+                            <option value="more than 30">More than 30 days</option>
+                        </select>
+
+                    </div>
+                    <!-- Days_Policy_Accident={'none':0, '1 to 7':4, '8 to 15':11.5, '15 to 30':22.5,'more than 30':31} -->
+                    <!-- Days_Policy_Claim={'8 to 15':11.5, '15 to 30':22.5,'more than 30':31} -->
+                    <h4>Days between when the policy was purchased and the cliam was filed</h4>
+                    <div class="input-group">
+                        <select name="daypolicycla" id="daypolicycla">
+                            <option value="null">-Select-</option>
+                            <option value="8 to 15">8 to 15 days</option>
+                            <option value="15 to 30">15 to 30 days</option>
+                            <option value="more than 30">More than 30 days</option>
+                        </select>
+
+                    </div>
+                    <div class="input-group input-group-icon">
+                        <input type="checkbox" class="form-check-input" id="exampleCheck1">
+                        <label class="form-check-label" for="exampleCheck1">Check me out</label>
+                    </div>
+                    <button type="submit" class="btn btn-primary"
+                        style="display: block;margin: auto; width: auto;">Submit</button>
+                </div>
+        </form>
+    </div>
+</div>
+<!-- 
+User Input    
+Month of Accident
+Week of month of Accident
+Day of Accident
+Area:Urban or Rural
+Month Week of  Month and Day of Claim applied(Use today function for getting these)
+Gender
+Marital Status
+Accident fault
+police report
+witness
+No. of cars involved -->
+{% endblock body %}

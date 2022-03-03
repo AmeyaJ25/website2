@@ -1,0 +1,200 @@
+{% extends 'basead.html' %}
+{% block body %}
+<link rel="stylesheet" href="{{url_for('static',filename='form.css')}}">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<style>
+  input[type="radio"].rad3+label.rad3 {
+    display: inline-block;
+    text-align: center;
+    width: 33%;
+    float: left;
+    border-radius: 0;
+  }
+  input[type="radio"].rad2+label.rad2 {
+    display: inline-block;
+    text-align: center;
+    width: 50%;
+    float: left;
+    border-radius: 0;
+  }
+</style>
+<div class="outer">
+  <div class="container1">
+    <form method="POST" action="#" name="fr1" id="rev_form1">
+      <div class="row">
+        <h4 style="  padding-bottom: 5%; text-align: center;">Account</h4>
+        <div class="input-group input-group-icon">
+          <input type="text" name="carno" placeholder="Car Number" />
+          <div class="input-icon"><i class="fa fa-car"></i></div>
+        </div>
+        <div class="input-group input-group-icon">
+          <input type="email" name="email" placeholder="Email Address" />
+          <div class="input-icon"><i class="fa fa-envelope"></i></div>
+        </div>
+        <!-- <div class="input-group input-group-icon">
+          <input type="date" placeholder="Bind Date" />
+          <div class="input-icon"><i class="fa fa-calendar"></i></div>
+        </div> -->
+        <!-- <div class="input-group input-group-icon">
+          <input type="number" placeholder="Total Claim" />
+          <div class="input-icon"><i class="fa fa-inr"></i></div>
+        </div> -->
+        <h4>Vehicle Category</h4>
+        <div class="input-group">
+
+          <input id="vehicle-sport" class="rad3" type="radio" name="vehiclecat" value="Sport" />
+          <label for="vehicle-sport" class="rad3">Sport</label>
+          <input id="vehicle-utility" class="rad3" type="radio" name="vehiclecat" value="Utility" />
+          <label for="vehicle-utility" class="rad3">Utility</label>
+          <input id="vehicle-sedan" class="rad3" type="radio" name="vehiclecat" value="Sedan" />
+          <label for="vehicle-sedan" class="rad3">Sedan</label>
+
+        </div>
+        <h4>Vehicle Price</h4>
+        <div class="input-group">
+          <select name="vehicleprice" id="vehicleprice">
+            <option value="null">-Select-</option>
+            <option value="less than 20000">less than 20000</option>
+            <option value="20000 to 29000">20000 to 29000</option>
+            <option value="30000 to 39000">30000 to 39000</option>
+            <option value="40000 to 59000">40000 to 59000</option>
+            <option value="60000 to 69000">60000 to 69000</option>
+            <option value="more than 69000">more than 69000</option>
+          </select>
+
+        </div>
+
+        <h4>Agent Type</h4>
+        <div class="input-group">
+
+          <input id="External" class="rad2" type="radio" name="agenttype" value="External" />
+          <label for="External" class="rad2">External</label>
+          <input id="Internal" class="rad2" type="radio" name="agenttype" value="Internal" />
+          <label for="Internal" class="rad2">Internal</label>
+
+        </div>
+
+        <h4>Deductable</h4>
+        <div class="input-group">
+
+          <select name="deductable" id="deductable">
+            <option value="null">-Select-</option>
+            <option value="300">300</option>
+            <option value="400">400</option>
+            <option value="500">500</option>
+            <option value="700">700</option>
+          </select>
+
+        </div>
+
+        <h4>Base Policy</h4>
+        <div class="input-group">
+
+          <input id="Liability" class="rad3" type="radio" name="basepolicy" value="Liability" />
+          <label for="Liability" class="rad3">Liability</label>
+          <input id="Collision" class="rad3" type="radio" name="basepolicy" value="Collision" />
+          <label for="Collision" class="rad3">Collision</label>
+          <input id="AllPerils" class="rad3" type="radio" name="basepolicy" value="All Perils" />
+          <label for="AllPerils" class="rad3">All Perils</label>
+
+        </div>
+
+        <h4>Age of Vehicle</h4>
+        <div class="input-group">
+
+          <!-- <label for="CarsInvolved"></label> -->
+          <select name="agevehicle" id="agevehicle">
+            <option value="new">-Select-</option>
+            <option value="new">New</option>
+            <option value="2 years">2 Years</option>
+            <option value="3 years">3 Years</option>
+            <option value="4 years">4 Years</option>
+            <option value="5 years">5 Years</option>
+            <option value="6 years">6 Years</option>
+            <option value="7 years">7 Years</option>
+            <option value="more than 7">More than 7 Years</option>
+          </select>
+
+        </div>
+
+        <h4>Company</h4>
+        <div class="input-group">
+
+          <!-- <label for="CarsInvolved"></label> -->
+          <select name="company" id="company">
+            <option value="null">-Select-</option>
+            <option value="Honda">Honda</option>
+            <option value="Toyota">Toyota</option>
+            <option value="Ford">Ford</option>
+            <option value="Mazda">Mazda</option>
+            <option value="Chevrolet">Chevrolet</option>
+            <option value="Pontiac">Pontiac</option>
+            <option value="Accura">Accura</option>
+            <option value="Dodge">Dodge</option>
+            <option value="Jaguar">Jaguar</option>
+            <option value="Nisson">Nisson</option>
+            <option value="VW">VW</option>
+            <option value="Saab">Saab</option>
+            <option value="Saturn">Saturn</option>
+            <option value="Porche">Porsche</option>
+            <option value="BMW">BMW</option>
+            <option value="Mecedes">Mercedes</option>
+            <option value="Ferrari">Ferrari</option>
+            <option value="Lexus">Lexus</option>
+          </select>
+
+        </div>
+
+        <h4>Policy Type</h4>
+        <div class="input-group">
+
+          <!-- <label for="CarsInvolved"></label> -->
+          <select name="policytype" id="policytype">
+            <option value="null">-Select-</option>
+            <option value="Sport - Liability">Sport - Liability</option>
+            <option value="Sport - Collision">Sport - Collision</option>
+            <option value="Sedan - Liability">Sedan - Liability</option>
+            <option value="Utility - All Perils">Utility - All Perils</option>
+            <option value="Sedan - All Perils">Sedan - All Perils</option>
+            <option value="Sedan - Collision">Sedan - Collision</option>
+            <option value="Utility - Collision">Utility - Collision</option>
+            <option value="Utility - Liability">Utility - Liability</option>
+            <option value="Sport - All Perils">Sport - All Perils</option>
+          </select>
+
+        </div>
+        <button type="submit" class="btn btn-primary" style="display: block;margin: auto; width: auto;">Submit</button>
+      </div>
+    </form>
+  </div>
+</div>
+{% endblock body %}
+<!-- 
+#Company
+#PolicyType
+#Vehicle Category 
+#Vehicle Price
+Deductable
+#Age of vehicle
+#Agent type
+#Base Policy
+ -->
+<!-- <form method="post" action="" style="border: 2px solid black; border-radius: 5px; padding: 10px;background-color: lightgrey;">
+    <div class="mb-3">
+      <label for="exampleInputEmail1" class="form-label">Car no</label>
+      <input type="text" name="carno" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
+    </div>
+    <div class="mb-3">
+      <label for="exampleInputPassword1" class="form-label">email</label>
+      <input type="email" name="email" class="form-control" id="exampleInputPassword1">
+    </div>
+    <div class="mb-3">
+      <label for="exampleInputPassword1" class="form-label">bind date</label>
+      <input type="date" name="date" class="form-control" id="exampleInputPassword1">
+    </div>
+    <div class="mb-3">
+      <label for="exampleInputPassword1" class="form-label">total claim</label>
+      <input type="number" name="claim" class="form-control" id="exampleInputPassword1">
+    </div>
+    <button type="submit" class="btn btn-primary" style="display: block;margin: auto;">Submit</button>
+  </form> -->

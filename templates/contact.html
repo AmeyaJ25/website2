@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<!-- Created By CodingLab - www.codinglabweb.com -->
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="UTF-8">
+   <!-- <title> Responsive Contact Us Form  | CodingLab </title>
+    <link rel="stylesheet" href="style.css">
+    Fontawesome CDN Link -->
+    <link rel="stylesheet" href="{{url_for('static',filename='contact.css')}}">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.2/css/all.min.css"/>
+     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   </head>
+<body class="">
+  <div class="container bg-dark bg-gradient">
+    <div class="content">
+      <div class="left-side">
+        <div class="address details">
+          <!-- <i class="fas fa-map-marker-alt"></i>-->
+          <img src="{{url_for('static',filename='placeholder.png')}}" alt="" srcset="" style="width: 11%;">
+          <div class="topic">Address</div>
+          <div class="text-one">Pillai college</div>
+          <div class="text-two">Sector 16, New Panvel East</div>
+        </div>
+        <div class="phone details">
+          <!-- <i class="fas fa-phone-alt"></i> -->
+          <!-- <i class="fa-regular fa-mobile"></i> -->
+          <img src="{{url_for('static',filename='phone-call.png')}}" alt="" srcset="" style="width: 11%;">
+          <div class="topic">Phone</div>
+          <div class="text-one">+1(701) 801 6830</div>
+          <div class="text-two">+91 123 456 7892</div>
+        </div>
+        <div class="email details">
+          <img src="{{url_for('static',filename='gmail.png')}}" alt="" srcset="" style="width: 11%;">
+          <div class="topic">Email</div>
+          <div class="text-one">DAO_insurance@gmail.com</div>
+          <div class="text-two">info.DAO_insurance@gmail.com</div>
+        </div>
+      </div>
+      <div class="right-side">
+        <div class="topic-text">Send us a message</div>
+        <p style="color: #afafb6;">If you have any query related to our different policy or claim details, you can send us message from here. It will be our pleasure to help you.</p>
+      <form action="/contact" method="post">
+        <div class="input-box">
+          <input type="text" name="name" placeholder="Enter your name">
+        </div>
+        <div class="input-box">
+          <input type="email" name="email" placeholder="Enter your email" required>
+        </div>
+        <div class="input-box message-box">
+          <textarea name="msg" id="" cols="30" rows="10" placeholder="Enter Your message" required></textarea>
+        </div>
+        <div class="input-box" style="display: inline;">
+          <a href="/">Go back</a>
+        </div>
+        <div class="topic-text" style="    display: inline;
+        margin-left: 27%;">
+          <button class="btn-lg" style="background-color: #ffc800;color: white;font-weight: bold;" type="submit">Submit</button>
+        </div>
+        <!-- <div class="button">
+          <input type="button" value="Submit" type="submit">
+        </div> -->
+      </form>
+    </div>
+    </div>
+  </div>
+</body>
+</html>

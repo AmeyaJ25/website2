@@ -1,0 +1,38 @@
+{% extends 'basead.html' %}
+{% block body %}
+  <br>
+  {% if data|length == 0 %}
+                   
+  <div class="alert alert-dark container" role="alert" style="text-align: center;">
+      No Query to display
+    </div>
+    {% else %} 
+    <div class="container">
+      <table class="table table-striped">
+          <thead>
+            <tr>
+              <th scope="col">SRno</th>
+              <th scope="col">Name</th>
+              <th scope="col">Email</th>
+              <th scope="col">Message</th>
+              <th scope="col">Reply</th>
+            </tr>
+          </thead>
+          <tbody>
+            {% for noti in data %}
+            <tr>
+              <form action="/sendmail/{{noti.email}}" method="post">
+                <th scope="row">{{loop.index}}</th>
+                <td>{{noti.name}}</td>
+                <td>{{noti.email}}</td>
+                <td>{{noti.msg}}</td>
+                <td><textarea name="admin_reply" class="form-control" id="" cols="10" rows="2"></textarea></td>
+                <td><button type="submit" class="btn-info">send mail</button></td>
+              </form>
+            </tr>
+            {% endfor %}
+          </tbody>
+      </table>
+    </div>
+    {% endif %}
+{% endblock body %}

@@ -1,0 +1,63 @@
+{% extends 'basead.html' %}
+{% block body %}
+        <!-- welcome to admin pannel{{uname}} -->
+    {% with messages = get_flashed_messages() %}
+        {% if messages %}
+            {% for message in messages %}
+                <p style="background-color: aliceblue;color: rgb(197, 50, 50); text-align: center;">{{ message }}</p>
+            {% endfor %}
+        {% endif %}
+    {% endwith %}
+    
+    <link rel="stylesheet" href="{{url_for('static',filename='card.css')}}">
+    <div class="leftdiv">
+        <div class="cards" style="display: block;">
+            <div class="card" style="width: 18rem; margin: auto;">
+                <div class="card-body">
+                    <!-- {{a}} -->
+                    <h5 class="card-title">Number Of User</h5>
+                    <h6 class="card-subtitle mb-2 text-muted">Users who are registered with us</h6>
+                    <p class="card-text">{{userno}}</p>
+                    <a href="/usersdisp" class="card-link">User</a>
+                    
+                </div>
+            </div>
+        </div>
+        <div class="cards" style="display: block;">
+            <div class="card" style="width: 18rem; margin: auto;">
+                <div class="card-body">
+                    <h5 class="card-title">Number of Notification</h5>
+                    <h6 class="card-subtitle mb-2 text-muted">Number of unreplied message</h6>
+                    <p class="card-text">{{notification}}</p>
+                    <a href="/notcontact" class="card-link">reply</a>
+                   
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="rightdiv">
+        <div class="cards">
+            <div class="cards" style="display: block;">
+            <div class="card" style="width: 18rem; margin: auto;">
+            <div class="card-body">
+              <h5 class="card-title">Number Of Policy</h5>
+              <h6 class="card-subtitle mb-2 text-muted">Car policy registered with us</h6>
+              <p class="card-text">{{policyno}}</p>
+              <a href="/adpolicy" class="card-link">view policy</a>
+              
+            </div>
+            </div>
+        </div></div>
+        <div class="cards"><div class="cards" style="display: block;">
+            <div class="card" style="width: 18rem; margin: auto;">
+            <div class="card-body">
+              <h5 class="card-title">Number Of Claim</h5>
+              <h6 class="card-subtitle mb-2 text-muted">Claims applied by User</h6>
+              <p class="card-text">{{claimno}}</p>
+              <a href="/claim" class="card-link">User Claim</a>
+              
+            </div>
+            </div>
+        </div></div>
+    </div>
+{% endblock body %}

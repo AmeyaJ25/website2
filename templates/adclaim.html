@@ -1,0 +1,84 @@
+{% extends 'basead.html' %}
+{% block body %}
+  {% if v2|length == 0 %}
+  <div class="alert alert-dark container" role="alert" style="text-align: center;">
+    No pending Claim
+  </div>
+    <!-- <h1 class="alert alert-primary">no policy to display</h1> -->
+  {% else %}
+  <style>
+    table { white-space: nowrap; }
+    td {
+      text-align: center;
+    }
+    th {
+      text-align: center;
+    }
+    /* width */
+    ::-webkit-scrollbar {
+      width: 20px;
+    }
+  
+    /* Track */
+    ::-webkit-scrollbar-track {
+      background-color: lightgrey;
+      box-shadow: inset 0 0 5px rgb(0, 0, 0);
+      border-radius: 10px;
+    }
+  
+    /* Handle */
+    ::-webkit-scrollbar-thumb {
+      background: rgb(0, 238, 255);
+      box-shadow: inset 0 0 5px rgb(16, 31, 99);
+      border-radius: 10px;
+    }
+  
+    /* Handle on hover */
+    ::-webkit-scrollbar-thumb:hover {
+      background: #09a3fc;
+      box-shadow: inset 0 0 5px rgb(0, 0, 0);
+    }
+  </style>
+  <br>
+<div class="con1" style="overflow-x: auto; margin-left: 4%; margin-right: 4%;">
+  <table class="table table-striped table-hover">
+    <thead>
+        <tr style="background-color: rgb(169, 172, 177);">
+          <th scope="col">#</th>
+          <th scope="col">Email ID</th>
+          <th scope="col">Date of Accident</th>
+          <!-- <th scope="col">Gender</th> -->
+          <th scope="col">Area of Accident</th>
+          <th scope="col">Marital Status</th>
+          <th scope="col">Police Report Filed</th>
+          <th scope="col">Witness Present</th>
+          <th scope="col">Fault</th>
+          <th scope="col">Number of Cars involved in Accident</th>
+          <th scope="col">Model Prediction</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for alldata in v2 %}
+       
+        <tr>
+          <th scope="row">{{loop.index}}</th>
+          <td>{{alldata.email}}</td>
+          <td>{{alldata.dateacc}}</td>
+          <!-- <td>{{alldata.gender}}</td> -->
+          <td>{{alldata.area}}</td>
+          <td>{{alldata.reportfiled}}</td>
+          <td>{{alldata.witnesspresent}}</td>
+          <td>{{alldata.marriedstatus}}</td>
+          <td>{{alldata.fault}}</td>
+          <td>{{alldata.noofcars}}</td>
+          <td>{{alldata.prediction}}</td>
+        </tr>
+        {% endfor %}
+        <!-- {% for alldata in v3 %}
+        
+        {% endfor %} -->
+    </tbody>
+</table>
+</div>
+  {% endif %}
+{% endblock %}

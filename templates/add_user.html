@@ -1,0 +1,144 @@
+{% extends 'basead.html' %}
+{% block body %}
+<link rel="stylesheet" href="{{url_for('static',filename='form.css')}}">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<style>
+input[type="radio"] + label{
+  width:50%;
+  display: inline-block;
+  text-align: center;
+  float: left;
+  border-radius: 0;
+}
+</style>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+<script>
+  function abc() {
+            let fn = document.getElementById('name1').value;
+            //let x = document.forms["fr"]["name1"].value;
+            //console.log(x);
+            let pass = document.getElementById('password1').value;
+            let nkey = /^[A-Za-z]+$/
+            //let dob = document.getElementById('DOB').value;
+            let ekey = /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/
+            let emails = document.getElementById('email1').value;
+            var checkRadio = document.querySelector('input[name="gender"]:checked');
+            console.log(checkRadio);
+            if (fn == '') {
+                alert("Please enter all the fields");
+                document.fr.name.focus();
+                return false;
+            }
+            else if (pass == '') {
+                alert("Please enter all the fields");
+                document.fr.passwd.focus();
+                return false;
+            }
+            // else if (dob == '') {
+            //     alert("Please enter all the fields");
+            //     document.fr.message.focus();
+            //     return false;
+            // }
+            else if (emails == '') {
+                alert("Please enter all the fields");
+                document.fr.email.focus();
+                return false;
+            }
+            else if(checkRadio == null){
+              alert("Please enter all the fields");
+                return false;
+            }
+          }
+            // else if (mnum == '') {
+            //     alert("Please enter all the fields");
+
+            //     document.fr.mnum.focus();
+            //     return false;
+            // }
+      //       else {
+                    
+      //           if (fn.match(nkey)) {
+      //               if (fn.length > 1 && fn.length <= 45) {
+      //                   // if (ln.match(nkey)) {
+      //                   //     if (ln.length > 1 && ln.length <= 20) {
+      //                           if (emails.match(ekey)) {
+                                    
+      //                                   return true;
+      //                           }
+      //                               else {
+      //                                   alert("wrong password format");
+      //                                   return false;
+      //                               }
+      //                           }
+      //                           else {
+      //                               alert("wrong email pattern");
+      //                               return false;
+      //                           }
+      //                       }
+      //                       else {
+      //                           alert("wrong last name length");
+      //                           return false;
+      //                       }
+      //                   }
+      //               }
+      //               else {
+      //                   alert("wrong first name length");
+      //                   return false;
+      //               }
+      //           }
+      //           else {
+      //               alert("name should contain letters only");
+      //               return false;
+      //           }
+      //       }
+      //   }
+      // }
+     // PastNumberOfClaims={'none':0, '1':1, '2 to 4':2, 'more than 4':5}
+</script>
+<div class="outer">
+<div class="container1">
+  <form method="POST" action="/adduserdb" name="fr" id="rev_form" onsubmit="return abc(this);">
+    <div class="row">
+      <h4 style="    padding-bottom: 5%; text-align: center;">Add New User</h4>
+      <div class="input-group input-group-icon">
+        <input type="text"  name="name" id="name1" aria-describedby="emailHelp" placeholder="Name"/>
+        <div class="input-icon"><i class="fa fa-user"></i></div>
+      </div>
+      <div class="input-group input-group-icon">
+        <input type="email" name="email" id="email1" aria-describedby="emailHelp" placeholder="Email Address"/>
+        <div class="input-icon"><i class="fa fa-envelope"></i></div>
+      </div>
+      <div class="input-group input-group-icon">
+        <input type="password" name="passwd" id="password1" placeholder="Password" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,120}" title="Must contain at least one number and one uppercase and lowercase letter, and at least 8 or more characters" required/>
+        <div class="input-icon"><i class="fa fa-key"></i></div>
+      </div>
+      
+      <div class="row">
+        <div class="col-half">
+          <h4>Date of Birth</h4>
+      <div class="input-group input-group-icon">
+        <input type="date" name="DOB" max="{{today2}}" id="dob" placeholder="Date of Birth" required/>
+        <div class="input-icon"><i class="fa fa-calendar"></i></div>
+      </div>
+    </div>
+    <div class="col-half">
+      <h4>Gender</h4>
+      <div class="input-group">
+        <input id="gender-male" type="radio" name="gender" value="Male"/>
+        <label for="gender-male">Male</label>
+        <input id="gender-female" type="radio" name="gender" value="Female"/>
+        <label for="gender-female">Female</label>
+      </div>
+    </div>
+      <div class="input-group input-group-icon">
+      <input type="checkbox" class="form-check-input" id="Check1">
+          <label class="form-check-label" for="Check1">Check me out</label>
+        </div> 
+      <input type="submit" name="submit" class="btn btn-primary" style="display: block;margin: auto; width: auto;" value="Submit">
+
+    </div>
+  </form>
+</div>
+</div>
+    
+{% endblock body %}
